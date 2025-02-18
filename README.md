@@ -14,11 +14,7 @@ Este projeto faz parte do *Tech Challenge - Fase 4* e implementa um Microsservi�
    ```bash
    docker login
     ```
-2. **Crie a imagem Docker do microsserviço (dentro do repositório):**
+2. **Execute o seguinte comando para subir os serviços:**
      ```bash
-    docker build -t ms-gateway-app .
-    ```
-3. **Execute o container e exponha a aplicação na porta 8080:**
-     ```bash
-    docker run -d -p 8080:8080 ms-gateway-app
+    docker compose up -d
     ```
