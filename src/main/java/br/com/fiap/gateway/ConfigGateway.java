@@ -11,17 +11,20 @@ public class ConfigGateway {
     @Bean
     public RouteLocator custom(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("pedido", ped -> ped.path("/api/pedido/**")
+                .route("pedido", ped -> ped.path("/api/pedidos/**")
                         .uri("http://localhost:8084"))
-                .route("produto", prd -> prd.path("/api/produto/**")
+                .route("produto", prd -> prd.path("/api/produtos/**")
                         .and()
-                        .not(prdNot -> prdNot.path("/api/produto/atualizarEstoque/**")) // Nao deixa acessar esta rota diretamente
-                        // .filters(f -> f.stripPrefix(1)) --Exemplo pra filtrar
+                        .not(prdNot -> prdNot.path("/api/produtos/atualizarEstoque/**"))
                         .uri("http://localhost:8082"))
-                .route("cliente", cli -> cli.path("/api/cliente/**")
+                .route("cliente", cli -> cli.path("/api/clientes/**")
                         .uri("http://localhost:8081"))
-                .route("entrega", ent -> ent.path("/api/entrega/**")
+                .route("entrega", ent -> ent.path("/api/entregas/**")
                         .uri("http://localhost:8083"))
+                .route("rastreamento", ent -> ent.path("/api/rastreamentos/**")
+                        .uri("http://localhost:8083"))
+                .route("carga", ent -> ent.path("/api/carga/**")
+                        .uri("http://localhost:8088"))
                 .build();
     }
 }
