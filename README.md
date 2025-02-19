@@ -14,7 +14,15 @@ Este projeto faz parte do *Tech Challenge - Fase 4* e implementa um Microsservi�
    ```bash
    docker login
     ```
-2. **Execute o seguinte comando para subir os serviços:**
+2. **Crie uma rede Docker, caso não tenha criado:**
      ```bash
-    docker compose up -d
+    docker network create app_network
+    ```
+3. **Execute o seguinte comando para construir a imagem:**
+     ```bash
+    docker build -t gateway-app .
+    ```
+4. **Execute o seguinte comando para executar o container:**
+     ```bash
+    docker run -d --name gatewayApp --network app_network -p 8080:8080 gateway-app
     ```
