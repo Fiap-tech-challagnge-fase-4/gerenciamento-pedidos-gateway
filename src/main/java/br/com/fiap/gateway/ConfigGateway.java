@@ -12,19 +12,19 @@ public class ConfigGateway {
     public RouteLocator custom(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("pedido", ped -> ped.path("/api/pedidos/**")
-                        .uri("http://localhost:8084"))
+                        .uri("http://pedidoApp:8084"))
                 .route("produto", prd -> prd.path("/api/produtos/**")
                         .and()
                         .not(prdNot -> prdNot.path("/api/produtos/atualizarEstoque/**"))
-                        .uri("http://localhost:8082"))
+                        .uri("http://produtoApp:8082"))
                 .route("cliente", cli -> cli.path("/api/clientes/**")
-                        .uri("http://localhost:8081"))
+                        .uri("http://clienteApp:8081"))
                 .route("entrega", ent -> ent.path("/api/entregas/**")
-                        .uri("http://localhost:8083"))
+                        .uri("http://entregaApp:8083"))
                 .route("rastreamento", ent -> ent.path("/api/rastreamentos/**")
-                        .uri("http://localhost:8083"))
+                        .uri("http://entregaApp:8083"))
                 .route("carga", ent -> ent.path("/api/carga/**")
-                        .uri("http://localhost:8088"))
+                        .uri("http://springbatch-app:8088"))
                 .build();
     }
 }
